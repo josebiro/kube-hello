@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta6
+kind: Config
+metadata:
+  name: kube-hello
+build:
+  artifacts:
+  - image: josebiro/hello-world
+deploy:
+  kustomize:
+    paths:
+    - overlays/dev
+profiles:
+- name: prod
+  deploy:
+    kustomize:
+      paths:
+      - overlays/prod
+- name: staging
+  deploy:
+    kustomize:
+      paths:
+      - overlays/staging
