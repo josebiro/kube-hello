@@ -3,8 +3,19 @@ kind: Config
 metadata:
   name: kube-hello
 build:
+  tagPolicy:
+    customTemplate:
+      template: "{{.DATE}}-{{.SHORT_SHA}}"
+      components:
+      - name: DATE
+        dateTime:
+          format: "2006-01-02"
+          timezone: "UTC"
+      - name: SHORT_SHA
+        gitCommit:
+          variant: AbbrevCommitSha
   artifacts:
-  - image: josebiro/hello-world
+  - image: josebiro/kube-hello
 deploy:
   kustomize:
     paths:

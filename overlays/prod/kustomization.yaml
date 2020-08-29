@@ -7,3 +7,6 @@ namespace: production
 images:
 - name: josebiro/hello-world
   newTag: v1.0.0
+patchesStrategicMerge:
+- stage.yaml
+    

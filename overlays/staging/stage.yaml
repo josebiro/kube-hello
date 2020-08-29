@@ -1,0 +1,13 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-hello
+spec:
+  template:
+    spec:
+      containers:
+        - name: kube-hello
+          env:
+            - name: STAGE
+              value: staging

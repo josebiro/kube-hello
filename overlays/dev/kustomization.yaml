@@ -4,3 +4,5 @@ resources:
 - ../../base/
 nameSuffix: -dev
 namespace: dev
+patchesStrategicMerge:
+- stage.yaml

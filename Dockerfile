@@ -10,11 +10,13 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o /app/main .
+RUN CGO_ENABLED=0 go build -o /kube-hello .
 
 #### Build the container image
-FROM alpine:latest
-ENV GOTRACEBACK=single
-COPY --from=builder /app/main .
+FROM alpine:3.12
 
-CMD = ["/app/main"]
+ENV GOTRACEBACK=single
+COPY --from=builder /kube-hello .
+
+EXPOSE 8080
+CMD ["/kube-hello", "server"]

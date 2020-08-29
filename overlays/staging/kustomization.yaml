@@ -7,3 +7,6 @@ namespace: staging
 images:
 - name: josebiro/hello-world
   newTag: v1.0.1-rc1
+patchesStrategicMerge:
+- stage.yaml
+    

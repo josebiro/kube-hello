@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-hello
+spec:
+  selector:
+    matchLabels:
+      app: kube-hello
+  template:
+    metadata:
+      labels:
+        app: kube-hello
+    spec:
+      containers:
+      - image: josebiro/kube-hello:latest
+        name: kube-hello
+        env:
+          - name: STAGE
+            value: OVERRIDDEN
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
